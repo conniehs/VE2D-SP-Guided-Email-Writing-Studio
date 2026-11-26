@@ -1,0 +1,2215 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vocational English | Guided Email Writing Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            warmbg: '#FAF8F5',
+            cardbg: '#FFFFFF',
+            amberlight: '#FEF3C7',
+            terracotta: '#D97706',
+            tealbrand: '#0D9488',
+            ink: '#1E293B',
+            muted: '#64748B'
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #FAF8F5;
+      color: #1E293B;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .bento-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 1.25rem;
+      box-shadow: 0 4px 20px -2px rgba(30, 41, 59, 0.04);
+    }
+    .drop-slot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 112px;
+      min-height: 36px;
+      padding: 2px 12px;
+      margin: 2px 4px;
+      border-radius: 0.65rem;
+      border: 2px dashed #CBD5E1;
+      background-color: #F8FAFC;
+      font-weight: 600;
+      color: #0F172A;
+      vertical-align: middle;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      user-select: none;
+    }
+    .drop-slot:hover {
+      border-color: #0D9488;
+      background-color: #F0FDFA;
+    }
+    .drop-slot.active-target {
+      border-color: #D97706;
+      background-color: #FFFBEB;
+      box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.2);
+    }
+    .drop-slot.filled {
+      border-style: solid;
+      border-color: #0D9488;
+      background-color: #CCFBF1;
+      color: #115E59;
+    }
+    .drop-slot.correct {
+      border-style: solid;
+      border-color: #16A34A;
+      background-color: #DCFCE7;
+      color: #166534;
+    }
+    .drop-slot.incorrect {
+      border-style: solid;
+      border-color: #DC2626;
+      background-color: #FEE2E2;
+      color: #991B1B;
+    }
+    .word-chip {
+      transition: all 0.18s ease;
+      user-select: none;
+    }
+    .word-chip.selected {
+      background-color: #D97706 !important;
+      color: #FFFFFF !important;
+      border-color: #B45309 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px -2px rgba(217, 119, 6, 0.35);
+    }
+    .word-chip.used {
+      opacity: 0.36;
+      pointer-events: none;
+    }
+    @keyframes unlockPop {
+      0% { opacity: 0; transform: translateY(8px) scale(0.985); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .unlock-animate {
+      animation: unlockPop 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes xpFloat {
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-18px); }
+    }
+    .xp-pulse {
+      animation: xpFloat 0.9s ease-out forwards;
+    }
+    @media print {
+      body {
+        background: #FFFFFF !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-only-area {
+        box-shadow: none !important;
+        border: 1px solid #CBD5E1 !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-amber-200 selection:text-slate-900">
+
+  <!-- Compact Top Header & Unified Step Progress Stepper -->
+  <header class="no-print sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-2xs">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-3 min-w-0">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-teal-600 to-emerald-600 text-white flex items-center justify-center font-display font-bold text-base shadow-sm shrink-0">
+          VE
+        </div>
+        <div class="min-w-0">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-teal-700 block leading-none">
+            Vocational English · Workplace Writing
+          </span>
+          <h1 class="font-display font-bold text-base sm:text-lg text-slate-900 truncate mt-0.5">
+            Guided Email Writing Studio
+          </h1>
+        </div>
+      </div>
+
+      <!-- Single Top Blueprint Drawer Trigger -->
+      <button type="button" onclick="toggleBlueprintModal(true)"
+        class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200/90 font-display font-bold text-xs sm:text-sm transition shrink-0">
+        <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        <span>4-Paragraph Blueprint</span>
+      </button>
+    </div>
+
+    <!-- Unified Horizontal 3-Step Progress Stepper -->
+    <nav aria-label="Learning Steps" class="max-w-5xl mx-auto px-4 sm:px-6 pb-3">
+      <ol class="grid grid-cols-3 gap-2 sm:gap-3">
+        <!-- Step 1 -->
+        <li>
+          <button type="button" id="stepper-btn-1" onclick="switchStep(1)"
+            class="w-full flex items-center gap-2.5 p-2 sm:px-3.5 sm:py-2.5 rounded-xl border-2 text-left transition">
+            <span id="stepper-badge-1" class="w-7 h-7 rounded-full flex items-center justify-center font-display font-bold text-xs shrink-0">1</span>
+            <div class="min-w-0">
+              <span class="block text-[10px] font-bold uppercase tracking-wider opacity-75 leading-none">Step 1</span>
+              <span class="block font-display font-bold text-xs sm:text-sm truncate mt-0.5">Learn the Rules</span>
+            </div>
+          </button>
+        </li>
+        <!-- Step 2 -->
+        <li>
+          <button type="button" id="stepper-btn-2" onclick="switchStep(2)"
+            class="w-full flex items-center gap-2.5 p-2 sm:px-3.5 sm:py-2.5 rounded-xl border-2 text-left transition">
+            <span id="stepper-badge-2" class="w-7 h-7 rounded-full flex items-center justify-center font-display font-bold text-xs shrink-0">2</span>
+            <div class="min-w-0">
+              <span class="block text-[10px] font-bold uppercase tracking-wider opacity-75 leading-none">Step 2</span>
+              <span class="block font-display font-bold text-xs sm:text-sm truncate mt-0.5">Practise the Model</span>
+            </div>
+          </button>
+        </li>
+        <!-- Step 3 -->
+        <li>
+          <button type="button" id="stepper-btn-3" onclick="switchStep(3)"
+            class="w-full flex items-center gap-2.5 p-2 sm:px-3.5 sm:py-2.5 rounded-xl border-2 text-left transition">
+            <span id="stepper-badge-3" class="w-7 h-7 rounded-full flex items-center justify-center font-display font-bold text-xs shrink-0">3</span>
+            <div class="min-w-0">
+              <span class="block text-[10px] font-bold uppercase tracking-wider opacity-75 leading-none">Step 3</span>
+              <span class="block font-display font-bold text-xs sm:text-sm truncate mt-0.5">Grammar Key Points</span>
+            </div>
+          </button>
+        </li>
+      </ol>
+    </nav>
+  </header>
+
+  <!-- Main Workspace -->
+  <main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
+
+    <!-- =====================================================================
+         STEP 1: LEARN THE RULES (4 CORE STRUCTURE QUESTIONS IN PARAGRAPH ORDER)
+         ===================================================================== -->
+    <section id="step-panel-1" class="space-y-6">
+      <div class="bento-card p-5 sm:p-7">
+        <!-- Step Header -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-100">
+          <div>
+            <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-100 px-2.5 py-1 rounded-lg">
+              Step 1 of 3 · Structure &amp; Language Rules
+            </div>
+            <h2 class="font-display font-bold text-xl sm:text-2xl text-slate-900 mt-2">
+              Understand the 4-Paragraph Email Structure
+            </h2>
+            <p class="text-sm text-slate-600 mt-1">
+              Answer the four questions below in paragraph order before practising the model email.
+            </p>
+          </div>
+          <div class="bg-stone-100 px-4 py-2.5 rounded-xl border border-stone-200 text-center shrink-0 self-start sm:self-auto">
+            <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Rules Mastered</div>
+            <div id="quiz-progress-display" class="font-display font-extrabold text-xl text-teal-700 mt-0.5">Answered 0 of 4</div>
+          </div>
+        </div>
+
+        <!-- Celebratory Completion Banner (Revealed when all 4 are correct) -->
+        <div id="quiz-mastered-banner" class="hidden mt-5 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-start gap-3">
+            <span class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold shrink-0 mt-0.5">✓</span>
+            <div>
+              <h3 class="font-display font-bold text-base text-emerald-950">All 4 Rules Mastered! Ready for Step 2</h3>
+              <p class="text-xs sm:text-sm text-emerald-800 mt-0.5">
+                You know how to structure each paragraph. Now practise placing key phrases into the model email.
+              </p>
+            </div>
+          </div>
+          <button type="button" onclick="switchStep(2)"
+            class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-display font-bold text-sm shadow-sm transition shrink-0">
+            Continue to Step 2: Practise the Model →
+          </button>
+        </div>
+
+        <!-- 4 Questions Container -->
+        <div id="quiz-container" class="mt-6 space-y-5"></div>
+
+        <!-- Step 1 Unified Footer Navigation -->
+        <div class="mt-8 pt-5 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <button type="button" onclick="resetQuiz()"
+            class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-semibold text-sm hover:bg-slate-50 transition">
+            Reset Answers
+          </button>
+          <button type="button" onclick="switchStep(2)"
+            class="w-full sm:w-auto px-6 py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-display font-bold text-sm shadow-sm transition flex items-center justify-center gap-2">
+            <span>Next Step: Practise the Model →</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         STEP 2: PRACTISE THE MODEL (SEQUENTIAL GAP-FILL REVISION)
+         ===================================================================== -->
+    <section id="step-panel-2" class="hidden space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+        <!-- Main Column: Sequential Gap-Fill Exercise -->
+        <div class="lg:col-span-8 bento-card p-5 sm:p-7">
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 border border-teal-200 px-2.5 py-1 rounded-lg">
+                Step 2 of 3 · Model Email Practice
+              </span>
+              <h2 class="font-display font-bold text-xl sm:text-2xl text-slate-900 mt-2">
+                Complete the Model Email
+              </h2>
+            </div>
+            <div class="px-3.5 py-1.5 rounded-xl font-display font-bold text-xs sm:text-sm bg-stone-100 text-slate-700 border border-stone-200">
+              Mastered: <span id="cloze-mastered-count" class="text-teal-700">0</span> / 14 blanks
+            </div>
+          </div>
+
+          <!-- Celebratory Completion Banner + Direct Download when all 14 blanks (Part 1 & Part 2) are solved -->
+          <div id="cloze-complete-banner" class="hidden mt-4 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 unlock-animate">
+            <div class="flex items-start gap-3">
+              <span class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold shrink-0 mt-0.5">✓</span>
+              <div>
+                <h3 class="font-display font-bold text-base text-emerald-950">Full Model Email Completed! (14 / 14 Blanks)</h3>
+                <p class="text-xs sm:text-sm text-emerald-800 mt-0.5">
+                  You have completed both Part 1 and Part 2. Download the model structure reference below, then write your own draft on <strong>Page 16</strong> (<strong>130–150 words</strong>).
+                </p>
+              </div>
+            </div>
+            <button type="button" onclick="downloadCompletedEmail()"
+              class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-display font-bold text-xs sm:text-sm shadow-sm transition inline-flex items-center justify-center gap-2 shrink-0">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              <span>Download Model Email</span>
+            </button>
+          </div>
+
+          <!-- Rehearsal Bridge Note to Page 16 -->
+          <div class="mt-4 p-3.5 rounded-xl bg-sky-50/80 border border-sky-200 text-xs sm:text-sm text-sky-950 flex items-start gap-2.5">
+            <span class="font-bold text-sky-700 shrink-0">Note:</span>
+            <p>
+              This walkthrough helps you practise how the <strong>model email</strong> is built. Once you finish, write your <strong>own</strong> 4-paragraph email on <strong>Page 16</strong> (<strong>130–150 words</strong>) using your notes and <strong>one</strong> chosen concern.
+            </p>
+          </div>
+
+          <!-- Clean Segmented Toggle for Part 1 & Part 2 -->
+          <div class="mt-4 grid grid-cols-2 gap-2 bg-stone-100 p-1.5 rounded-xl border border-stone-200/80">
+            <button type="button" id="cloze-subtab-A" onclick="switchClozePart('A')"
+              class="py-2.5 px-3 rounded-lg font-display font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2">
+              <span>Part 1: Paragraphs 1 &amp; 2</span>
+              <span id="badge-part-A" class="px-2 py-0.5 rounded-full text-[11px]">6 blanks</span>
+            </button>
+            <button type="button" id="cloze-subtab-B" onclick="switchClozePart('B')"
+              class="py-2.5 px-3 rounded-lg font-display font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2">
+              <span>Part 2: Paragraphs 3 &amp; 4</span>
+              <span id="badge-part-B" class="px-2 py-0.5 rounded-full text-[11px]">8 blanks</span>
+            </button>
+          </div>
+
+          <!-- Sticky / Docked Word Bank Paired Directly with Active Passage -->
+          <div class="sticky top-[116px] sm:top-[122px] z-20 mt-4 p-3.5 sm:p-4 rounded-2xl bg-amber-50/95 backdrop-blur-xs border border-amber-200 shadow-xs">
+            <div class="flex flex-wrap items-center justify-between gap-1 mb-2">
+              <span id="word-bank-title" class="text-xs font-bold uppercase tracking-wider text-amber-900">
+                Part 1 Word Bank
+              </span>
+              <span id="selected-chip-hint" class="text-xs font-medium text-amber-800">
+                Tap a phrase, then tap a blank box
+              </span>
+            </div>
+            <div id="word-bank" class="flex flex-wrap gap-2"></div>
+          </div>
+
+          <!-- PART 1 DOCUMENT (Paragraphs 1 & 2) -->
+          <div id="cloze-doc-A" class="mt-4 p-5 sm:p-6 rounded-2xl bg-stone-50 border border-slate-200/90 font-sans text-base sm:text-[17px] leading-[2.35] text-slate-800 shadow-inner">
+            <p class="font-semibold text-slate-900 mb-3">Dear May</p>
+
+            <!-- Paragraph 1 -->
+            <div class="mb-5 pl-3.5 border-l-4 border-amber-400">
+              <span class="block text-[11px] font-bold uppercase tracking-wider text-amber-700 leading-none mb-1.5">
+                Paragraph 1 · Purpose of Writing
+              </span>
+              <p>
+                I am writing to state my
+                <span tabindex="0" role="button" aria-label="Part 1 Blank 1" data-part="A" data-slot="0" class="drop-slot" onclick="handleSlotClick('A', 0)" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 'A', 0)">1</span>
+                for the event ticketing platform and give
+                <span tabindex="0" role="button" aria-label="Part 1 Blank 2" data-part="A" data-slot="1" class="drop-slot" onclick="handleSlotClick('A', 1)" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 'A', 1)">2</span>
+                for my choice.
+              </p>
+            </div>
+
+            <!-- Paragraph 2 -->
+            <div class="pl-3.5 border-l-4 border-teal-500">
+              <span class="block text-[11px] font-bold uppercase tracking-wider text-teal-700 leading-none mb-1.5">
+                Paragraph 2 · Background Description of Both Options
+              </span>
+              <p>
+                I have collected some information about the two ticketing platforms,
+                <span tabindex="0" role="button" aria-label="Part 1 Blank 3" data-part="A" data-slot="2" class="drop-slot" onclick="handleSlotClick('A', 2)" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 'A', 2)">3</span>
+                City Tickets and TicketEasy. Regarding City Tickets,
+                <span tabindex="0" role="button" aria-label="Part 1 Blank 4" data-part="A" data-slot="3" class="drop-slot" onclick="handleSlotClick('A', 3)" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 'A', 3)">4</span>
+                most popular ticketing site in Hong Kong and
+                <span tabindex="0" role="button" aria-label="Part 1 Blank 5" data-part="A" data-slot="4" class="drop-slot" onclick="handleSlotClick('A', 4)" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 'A', 4)">5</span>
+                ticketing services for government events. For TicketEasy,
+                <span tabindex="0" role="button" aria-label="Part 1 Blank 6" data-part="A" data-slot="5" class="drop-slot" onclick="handleSlotClick('A', 5)" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 'A', 5)">6</span>
+                well-established ticketing platform.
+              </p>
+            </div>
+          </div>
+
+          <!-- PART 2 DOCUMENT (Paragraphs 3 & 4) -->
+          <div id="cloze-doc-B" class="hidden mt-4 p-5 sm:p-6 rounded-2xl bg-stone-50 border border-slate-200/90 font-sans text-base sm:text-[17px] leading-[2.35] text-slate-800 shadow-inner">
+            <!-- Paragraph 3 -->
+            <div class="mb-5 pl-3.5 border-l-4 border-indigo-500">
+              <span class="block text-[11px] font-bold uppercase tracking-wider text-indigo-700 leading-none mb-1.5">
+                Paragraph 3 · Preference, Reasons &amp; One Concern
+              </span>
+              <p>
+                After comparison,
+                <span tabindex="0" role="button" aria-label="Part 2 Blank 1" data-part="B" data-slot="0" class="drop-slot" onclick="handleSlotClick('B', 0)" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 'B', 0)">1</span>
+                City Tickets.
+                <span tabindex="0" role="button" aria-label="Part 2 Blank 2" data-part="B" data-slot="1" class="drop-slot" onclick="handleSlotClick('B', 1)" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 'B', 1)">2</span>
+                a variety of optional services,
+                <span tabindex="0" role="button" aria-label="Part 2 Blank 3" data-part="B" data-slot="2" class="drop-slot" onclick="handleSlotClick('B', 2)" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 'B', 2)">3</span>
+                include a 24/7 live hotline and website integration,
+                <span tabindex="0" role="button" aria-label="Part 2 Blank 4" data-part="B" data-slot="3" class="drop-slot" onclick="handleSlotClick('B', 3)" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 'B', 3)">4</span>
+                we can provide instant responses for customers.
+                <span tabindex="0" role="button" aria-label="Part 2 Blank 5" data-part="B" data-slot="4" class="drop-slot" onclick="handleSlotClick('B', 4)" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 'B', 4)">5</span>,
+                TicketEasy is not preferred. It offers both browser and mobile app access,
+                <span tabindex="0" role="button" aria-label="Part 2 Blank 6" data-part="B" data-slot="5" class="drop-slot" onclick="handleSlotClick('B', 5)" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 'B', 5)">6</span>
+                it is convenient for customers.
+                <span tabindex="0" role="button" aria-label="Part 2 Blank 7" data-part="B" data-slot="6" class="drop-slot" onclick="handleSlotClick('B', 6)" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 'B', 6)">7</span>,
+                it is more costly
+                <span tabindex="0" role="button" aria-label="Part 2 Blank 8" data-part="B" data-slot="7" class="drop-slot" onclick="handleSlotClick('B', 7)" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 'B', 7)">8</span>
+                it requires an initial setup fee.
+              </p>
+            </div>
+
+            <!-- Paragraph 4 -->
+            <div class="pl-3.5 border-l-4 border-emerald-500">
+              <span class="block text-[11px] font-bold uppercase tracking-wider text-emerald-700 leading-none mb-1.5">
+                Paragraph 4 · Polite Closing &amp; Sign-off
+              </span>
+              <p class="leading-relaxed">
+                I hope these ideas are useful to you. Please feel free to contact me if you have any questions.
+              </p>
+              <p class="mt-3 leading-snug font-semibold text-slate-900">
+                Regards<br />
+                Mike
+              </p>
+            </div>
+          </div>
+
+          <!-- Feedback Banner + Direct Part 2 / Step 3 Callout -->
+          <div id="cloze-feedback" class="hidden mt-4 p-4 rounded-xl text-sm font-medium flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <span id="cloze-feedback-text"></span>
+            <button type="button" id="cloze-next-action-btn" class="hidden px-4 py-2 rounded-lg font-display font-bold text-xs sm:text-sm bg-emerald-600 hover:bg-emerald-700 text-white shadow-2xs shrink-0 transition"></button>
+          </div>
+
+          <!-- Single Clean Exercise Toolbar Beneath Passage -->
+          <div class="mt-5 p-3.5 rounded-2xl bg-stone-100/90 border border-stone-200/80 flex flex-wrap items-center justify-between gap-2.5">
+            <div class="flex flex-wrap items-center gap-2">
+              <button type="button" onclick="checkActiveCloze()"
+                class="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-display font-bold text-sm shadow-sm transition">
+                Check Answers
+              </button>
+              <button type="button" onclick="showActiveClozeSolution()"
+                class="px-4 py-2.5 rounded-xl bg-white hover:bg-amber-50 text-amber-900 border border-amber-200 font-semibold text-sm transition">
+                Show Model Answer
+              </button>
+              <button type="button" onclick="resetActiveCloze()"
+                class="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-semibold text-sm transition">
+                Reset
+              </button>
+            </div>
+
+            <button type="button" id="btn-switch-subpart" onclick="switchClozePart('B')"
+              class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-display font-bold text-xs sm:text-sm transition">
+              Continue to Part 2 →
+            </button>
+          </div>
+
+          <!-- Step 2 Unified Footer Navigation -->
+          <div class="mt-7 pt-5 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <button type="button" onclick="switchStep(1)"
+              class="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 font-display font-bold text-sm transition">
+              ← Previous Step
+            </button>
+            <button type="button" id="step2-next-btn" onclick="switchStep(3)"
+              class="w-full sm:w-auto px-6 py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-display font-bold text-sm shadow-sm transition">
+              Next Step: Grammar Key Points →
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: Language Focus Notes -->
+        <aside class="lg:col-span-4 space-y-4">
+          <div id="annotations-part-A" class="bento-card p-5 bg-gradient-to-b from-white to-stone-50">
+            <h3 class="font-display font-bold text-base text-slate-900 flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center text-xs font-bold">P1–2</span>
+              Language Focus: Opening
+            </h3>
+            <p class="text-xs text-slate-500 mt-1">Key structures in Paragraphs 1 &amp; 2:</p>
+
+            <div class="mt-4 space-y-3 text-sm">
+              <div class="p-3.5 rounded-xl bg-amber-50/80 border border-amber-200/70">
+                <div class="font-bold text-amber-900 text-xs uppercase tracking-wide">1. Purpose Statement</div>
+                <p class="text-slate-700 text-xs mt-1 leading-relaxed">
+                  <em>"I am writing to state my <strong>preference</strong>... and give <strong>reasons</strong> for my choice."</em> Clearly states why you are writing without revealing your final choice yet.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-teal-50/80 border border-teal-200/70">
+                <div class="font-bold text-teal-900 text-xs uppercase tracking-wide">2. Introducing Options with "namely"</div>
+                <p class="text-slate-700 text-xs mt-1 leading-relaxed">
+                  Use <strong><em>", namely [Option A] and [Option B]."</em></strong> (never <em>"names"</em>) to specify the exact two platforms researched.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-sky-50/80 border border-sky-200/70">
+                <div class="font-bold text-sky-900 text-xs uppercase tracking-wide">3. Neutral Background Only</div>
+                <p class="text-slate-700 text-xs mt-1 leading-relaxed">
+                  Use <strong><em>"Regarding City Tickets, ..."</em></strong> and <strong><em>"For TicketEasy, ..."</em></strong> to describe each option objectively before comparing them in Paragraph 3.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-purple-50/80 border border-purple-200/70">
+                <div class="font-bold text-purple-900 text-xs uppercase tracking-wide">4. Grammar Check: Articles</div>
+                <p class="text-slate-700 text-xs mt-1 leading-relaxed">
+                  Notice <strong><em>"it is <u>the</u> most popular..."</em></strong> (superlative takes <em>the</em>) versus <strong><em>"it is <u>a</u> well-established..."</em></strong> (singular countable noun takes <em>a</em>).
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div id="annotations-part-B" class="hidden bento-card p-5 bg-gradient-to-b from-white to-stone-50">
+            <h3 class="font-display font-bold text-base text-slate-900 flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-800 flex items-center justify-center text-xs font-bold">P3–4</span>
+              Language Focus: Choice &amp; Closing
+            </h3>
+            <p class="text-xs text-slate-500 mt-1">Key connectors in Paragraphs 3 &amp; 4:</p>
+
+            <div class="mt-4 space-y-3 text-sm">
+              <div class="p-3.5 rounded-xl bg-indigo-50/80 border border-indigo-200/70">
+                <div class="font-bold text-indigo-900 text-xs uppercase tracking-wide">1. Stating Preference &amp; Reasons</div>
+                <p class="text-slate-700 text-xs mt-1 leading-relaxed">
+                  Begin with <strong><em>"After comparison, I would prefer..."</em></strong> Use <strong><em>which</em></strong> to list optional services and <strong><em>so</em></strong> to explain the benefit for customers.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-amber-50/80 border border-amber-200/70">
+                <div class="font-bold text-amber-900 text-xs uppercase tracking-wide">2. Balanced Concession ("On the other hand")</div>
+                <p class="text-slate-700 text-xs mt-1 leading-relaxed">
+                  Introduce the non-preferred option with <strong><em>"On the other hand, [Option B] is not preferred."</em></strong> Acknowledge a positive point first (<em>It offers..., so it is convenient...</em>).
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-rose-50/80 border border-rose-200/70">
+                <div class="font-bold text-rose-900 text-xs uppercase tracking-wide">3. Contrast &amp; One Concern ("However... as")</div>
+                <p class="text-slate-700 text-xs mt-1 leading-relaxed">
+                  Use <strong><em>"However, it is more costly as..."</em></strong> to highlight <strong>one key concern</strong> from the task rather than every flaw.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200/70">
+                <div class="font-bold text-emerald-900 text-xs uppercase tracking-wide">4. Polite Workplace Closing</div>
+                <p class="text-slate-700 text-xs mt-1 leading-relaxed">
+                  End with a courteous follow-up sentence (<em>"Please feel free to contact me if you have any questions."</em>) and <strong><em>Regards</em></strong>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         STEP 3: GRAMMAR KEY POINTS CLINIC (DIRECT ERROR REPAIR)
+         ===================================================================== -->
+    <section id="step-panel-3" class="hidden space-y-6">
+      <div class="bento-card p-5 sm:p-8 max-w-4xl mx-auto">
+        <!-- Header & Score HUD -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-100">
+          <div>
+            <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-indigo-800 bg-indigo-100 px-2.5 py-1 rounded-lg">
+              Step 3 of 3 · Interactive Grammar Clinic
+            </div>
+            <h2 class="font-display font-bold text-xl sm:text-2xl text-slate-900 mt-2">
+              Fix the Highlighted Mistake in Each Rule
+            </h2>
+            <p class="text-sm text-slate-600 mt-1">
+              Each sentence contains a <span class="font-semibold text-rose-700 bg-rose-50 px-1.5 py-0.5 rounded border border-rose-200">red grammar mistake</span>. Choose the right option below to fix it.
+            </p>
+          </div>
+          <div class="bg-stone-100 px-4 py-2.5 rounded-xl border border-stone-200 text-center shrink-0 self-start sm:self-auto">
+            <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Rules Mastered</div>
+            <div id="grammar-score-display" class="font-display font-extrabold text-xl text-teal-700 mt-0.5">0 / 6</div>
+          </div>
+        </div>
+
+        <!-- Clean 6-Step Grammar Pill Navigator -->
+        <nav aria-label="Grammar Points" class="mt-5">
+          <div id="grammar-pill-nav" class="grid grid-cols-3 sm:grid-cols-6 gap-2"></div>
+        </nav>
+
+        <!-- Celebratory Banner when all 6 Grammar Drills are solved -->
+        <div id="grammar-complete-banner" class="hidden mt-6 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-start gap-3">
+            <span class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold shrink-0 mt-0.5">✓</span>
+            <div>
+              <h3 class="font-display font-bold text-base text-emerald-950">All 6 Grammar Key Points Mastered!</h3>
+              <p class="text-xs sm:text-sm text-emerald-800 mt-0.5">
+                Now draft your own 4-paragraph email on <strong>Page 16</strong> (<strong>130–150 words</strong>, with <strong>one</strong> elaborated concern), then review it with the <strong>Self-Editing Checklist on Page 28</strong>.
+              </p>
+            </div>
+          </div>
+          <button type="button" onclick="downloadGrammarSummary()"
+            class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-display font-bold text-xs sm:text-sm shadow-sm transition inline-flex items-center justify-center gap-2 shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span>Download Grammar Key Points Sheet</span>
+          </button>
+        </div>
+
+        <!-- Single Spacious Focused Grammar Card Stage -->
+        <div id="grammar-cards-container" class="mt-6"></div>
+
+        <!-- Step 3 Unified Footer Navigation -->
+        <div class="mt-8 pt-5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+          <button type="button" onclick="switchStep(2)"
+            class="px-5 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 font-display font-bold text-sm transition">
+            ← Previous Step
+          </button>
+          <div class="flex flex-wrap items-center gap-2.5">
+            <button type="button" onclick="resetGrammarClinic()"
+              class="px-4 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold text-sm transition">
+              Reset Drills
+            </button>
+            <button type="button" onclick="toggleNextStepsModal(true)"
+              class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-display font-bold text-sm shadow-sm transition">
+              Finish &amp; View Next Steps →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Slide-Over 4-Paragraph Blueprint Drawer (Accessible from Top Header) -->
+  <div id="blueprint-modal" class="no-print hidden fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex justify-end" onclick="if(event.target === this) toggleBlueprintModal(false)">
+    <div class="w-full max-w-md bg-white h-full shadow-2xl p-6 overflow-y-auto flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <div>
+            <span class="text-[11px] font-bold uppercase tracking-wider text-amber-700">Quick Reference Guide</span>
+            <h2 class="font-display font-bold text-lg text-slate-900">4-Paragraph Email Blueprint</h2>
+          </div>
+          <button type="button" onclick="toggleBlueprintModal(false)" aria-label="Close Blueprint"
+            class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center transition">
+            ✕
+          </button>
+        </div>
+
+        <div class="mt-5 space-y-3.5 text-sm">
+          <div class="p-4 rounded-2xl bg-amber-50/70 border-l-4 border-amber-400">
+            <div class="font-display font-bold text-amber-950 text-xs uppercase tracking-wider">Paragraph 1 · Introduction</div>
+            <p class="text-slate-700 text-xs mt-1 leading-relaxed">
+              State the <strong>purpose of writing</strong> clearly in one sentence without revealing your choice yet.<br/>
+              <em>"I am writing to state my preference for... and give reasons for my choice."</em>
+            </p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-teal-50/70 border-l-4 border-teal-500">
+            <div class="font-display font-bold text-teal-950 text-xs uppercase tracking-wider">Paragraph 2 · Background Description</div>
+            <p class="text-slate-700 text-xs mt-1 leading-relaxed">
+              Introduce both options using <strong><em>namely</em></strong>, then describe each objectively using <strong><em>Regarding [Option A], ...</em></strong> and <strong><em>For [Option B], ...</em></strong> (no comparisons yet).
+            </p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-indigo-50/70 border-l-4 border-indigo-500">
+            <div class="font-display font-bold text-indigo-950 text-xs uppercase tracking-wider">Paragraph 3 · Preference &amp; One Concern</div>
+            <p class="text-slate-700 text-xs mt-1 leading-relaxed">
+              State your preference (<em>After comparison, I would prefer...</em>) and elaborate using <strong><em>which</em></strong> and <strong><em>so</em></strong>. Then introduce the other option with <strong><em>On the other hand</em></strong>, note one strength, and explain <strong>one concern</strong> using <strong><em>However</em></strong> and <strong><em>as</em></strong>.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-emerald-50/70 border-l-4 border-emerald-500">
+            <div class="font-display font-bold text-emerald-950 text-xs uppercase tracking-wider">Paragraph 4 · Polite Closing</div>
+            <p class="text-slate-700 text-xs mt-1 leading-relaxed">
+              End with a helpful closing sentence (<em>"I hope these ideas are useful to you. Please feel free to contact me if you have any questions."</em>) and sign off with <strong><em>Regards</em></strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" onclick="toggleBlueprintModal(false)"
+        class="mt-6 w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-display font-bold text-sm transition">
+        Close Blueprint
+      </button>
+    </div>
+  </div>
+
+  <!-- Large Pop-Up Screen: Next in Your Supplementary Package (Triggered upon finishing Step 3) -->
+  <div id="next-steps-modal" class="no-print hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6" onclick="if(event.target === this) toggleNextStepsModal(false)">
+    <div class="w-full max-w-xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden unlock-animate">
+      <!-- Top Celebratory Header -->
+      <div class="bg-gradient-to-r from-teal-600 to-emerald-600 px-6 py-6 sm:px-8 sm:py-7 text-white relative">
+        <button type="button" onclick="toggleNextStepsModal(false)" aria-label="Close Pop-up"
+          class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold flex items-center justify-center transition">
+          ✕
+        </button>
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-emerald-50 font-display font-bold text-xs uppercase tracking-wider">
+          <span>★</span> Studio Complete · Ready to Write
+        </div>
+        <h2 class="font-display font-extrabold text-xl sm:text-2xl mt-3 leading-snug">
+          Next in Your Supplementary Package: Draft on Page 16 &amp; Check on Page 28
+        </h2>
+      </div>
+
+      <!-- Body Content -->
+      <div class="p-6 sm:p-8 space-y-5">
+        <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+          Write your <strong>own</strong> 4-paragraph email on <strong>Page 16</strong> (<strong>130–150 words</strong>), making sure to select and elaborate on <strong>one</strong> concern. Before submitting, verify your draft using the <strong>Self-Editing Checklist on Page 28</strong>.
+        </p>
+
+        <!-- Two Visual Step Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div class="p-4 rounded-2xl bg-amber-50/80 border border-amber-200">
+            <span class="inline-block px-2.5 py-0.5 rounded-md bg-amber-500 text-white font-display font-bold text-xs uppercase tracking-wider">
+              Page 16
+            </span>
+            <h3 class="font-display font-bold text-sm text-amber-950 mt-2">Write Your Own Draft</h3>
+            <p class="text-xs text-amber-900/90 mt-1 leading-relaxed">
+              4 paragraphs · <strong>130–150 words</strong> · Select &amp; elaborate on <strong>one</strong> concern.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-teal-50/80 border border-teal-200">
+            <span class="inline-block px-2.5 py-0.5 rounded-md bg-teal-600 text-white font-display font-bold text-xs uppercase tracking-wider">
+              Page 28
+            </span>
+            <h3 class="font-display font-bold text-sm text-teal-950 mt-2">Self-Editing Checklist</h3>
+            <p class="text-xs text-teal-900/90 mt-1 leading-relaxed">
+              Review layout, content flow, grammar &amp; logic before submitting.
+            </p>
+          </div>
+        </div>
+
+        <!-- Quick Revision Download Shortcuts + Close Button -->
+        <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <button type="button" onclick="downloadGrammarSummary()"
+            class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 font-display font-bold text-xs sm:text-sm transition inline-flex items-center justify-center gap-2">
+            <svg class="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span>Download Grammar Sheet</span>
+          </button>
+
+          <button type="button" onclick="toggleNextStepsModal(false)"
+            class="w-full sm:w-auto px-6 py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-display font-bold text-sm shadow-sm transition">
+            Got It, Start Writing!
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Banner -->
+  <div id="toast-banner" class="no-print fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-slate-900 text-white px-4 py-3 rounded-xl shadow-lg flex items-center gap-2.5 text-sm font-medium">
+      <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+      <span id="toast-message">Copied to clipboard!</span>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // STEP 3: GRAMMAR KEY POINTS CLINIC (DIRECT ERROR REPLACEMENT)
+    // =========================================================================
+    const grammarKeyPoints = [
+      {
+        id: 'gp1',
+        shortLabel: '1. Purpose',
+        badge: 'Paragraph 1 · Infinitive of Purpose',
+        accent: 'amber',
+        title: '1. Using "to + base verb" for Purpose',
+        rule: 'Use "I am writing to + [base verb]" to state your purpose clearly. Notice how "and" connects two parallel base verbs: "state... and give...".',
+        formula: 'I am writing to state my preference for [topic] and give reasons for my choice.',
+        wrongExample: 'I am writing for stating my preference and giving reasons.',
+        rightExample: 'I am writing to state my preference and give reasons for my choice.',
+        sentenceTokens: [
+          { text: 'I am writing', isError: false },
+          { text: 'for stating', isError: true, replacement: 'to state' },
+          { text: 'my preference for the platform and', isError: false },
+          { text: 'giving', isError: true, replacement: 'give' },
+          { text: 'reasons for my choice.', isError: false }
+        ],
+        repairOptions: [
+          { text: 'to state ... give', correct: true },
+          { text: 'to stating ... gives', correct: false },
+          { text: 'for state ... giving', correct: false }
+        ],
+        feedback: 'Spot on! Both "state" and "give" stay in the base infinitive form after "to".'
+      },
+      {
+        id: 'gp2',
+        shortLabel: '2. "namely"',
+        badge: 'Paragraph 2 · Appositive Adverb',
+        accent: 'teal',
+        title: '2. Introducing Options with ", namely"',
+        rule: 'Place a comma before "namely" (meaning "that is to say") when naming the exact two options you researched. Never use "names" here.',
+        formula: '...about the two [noun], namely [Option A] and [Option B].',
+        wrongExample: '...about the two ticketing platforms, names City Tickets and TicketEasy.',
+        rightExample: '...about the two ticketing platforms, namely City Tickets and TicketEasy.',
+        sentenceTokens: [
+          { text: 'I have collected information about the two platforms,', isError: false },
+          { text: 'names', isError: true, replacement: 'namely' },
+          { text: 'City Tickets and TicketEasy.', isError: false }
+        ],
+        repairOptions: [
+          { text: 'namely', correct: true },
+          { text: 'named as', correct: false },
+          { text: 'such', correct: false }
+        ],
+        feedback: 'Correct! ", namely" acts as a linking adverb to specify the exact two platforms.'
+      },
+      {
+        id: 'gp3',
+        shortLabel: '3. Articles',
+        badge: 'Paragraph 2 · Definite vs Indefinite Articles',
+        accent: 'sky',
+        title: '3. Articles: "the" (Superlative) vs "a" (Singular)',
+        rule: 'Use "the" before a superlative adjective ("the most popular..."), and use "a / an" before a singular countable noun phrase ("a well-established platform").',
+        formula: 'it is the most [adj.] + [noun]  /  it is a [adj.] + [singular noun]',
+        wrongExample: 'City Tickets is a most popular site, while TicketEasy is well-established platform.',
+        rightExample: 'City Tickets is the most popular site, while TicketEasy is a well-established platform.',
+        sentenceTokens: [
+          { text: 'Regarding City Tickets, it is', isError: false },
+          { text: 'a most popular', isError: true, replacement: 'the most popular' },
+          { text: 'ticketing site in Hong Kong.', isError: false }
+        ],
+        repairOptions: [
+          { text: 'the most popular', correct: true },
+          { text: 'most popular', correct: false },
+          { text: 'an most popular', correct: false }
+        ],
+        feedback: 'Well done! Superlative adjectives ("most popular") always take the definite article "the".'
+      },
+      {
+        id: 'gp4',
+        shortLabel: '4. "which"',
+        badge: 'Paragraph 3 · Non-Defining Relative Clause',
+        accent: 'indigo',
+        title: '4. Adding Examples with ", which include..."',
+        rule: 'Use a comma + "which" after a plural noun phrase ("optional services") to give extra examples without starting a new sentence. Keep the verb plural ("include").',
+        formula: 'It provides [plural noun], which include [Example 1] and [Example 2], ...',
+        wrongExample: 'It provides optional services, which includes a 24/7 hotline and website integration.',
+        rightExample: 'It provides optional services, which include a 24/7 hotline and website integration.',
+        sentenceTokens: [
+          { text: 'It provides a variety of optional services,', isError: false },
+          { text: 'which includes', isError: true, replacement: 'which include' },
+          { text: 'a 24/7 live hotline and website integration.', isError: false }
+        ],
+        repairOptions: [
+          { text: 'which include', correct: true },
+          { text: 'that includes', correct: false },
+          { text: 'which including', correct: false }
+        ],
+        feedback: 'Exact! Because "which" refers to plural "optional services", the verb must be plural "include".'
+      },
+      {
+        id: 'gp5',
+        shortLabel: '5. "so"',
+        badge: 'Paragraph 3 · Conjunction of Result',
+        accent: 'purple',
+        title: '5. Showing Positive Results with ", so..."',
+        rule: 'Use ", so + [subject + verb]" to connect a product feature to its practical benefit for customers or the company.',
+        formula: '[Feature clause], so [who] can [positive outcome].',
+        wrongExample: 'It offers both browser and mobile app access, however it is convenient for customers.',
+        rightExample: 'It offers both browser and mobile app access, so it is convenient for customers.',
+        sentenceTokens: [
+          { text: 'It offers both browser and mobile app access,', isError: false },
+          { text: 'however', isError: true, replacement: 'so' },
+          { text: 'it is convenient for customers.', isError: false }
+        ],
+        repairOptions: [
+          { text: 'so', correct: true },
+          { text: 'although', correct: false },
+          { text: 'unless', correct: false }
+        ],
+        feedback: 'Great job! ", so" clearly links the feature to its positive customer benefit.'
+      },
+      {
+        id: 'gp6',
+        shortLabel: '6. "However...as"',
+        badge: 'Paragraph 3 · Contrast & Reason Connectors',
+        accent: 'rose',
+        title: '6. Contrast ("However") & Reason ("as + clause")',
+        rule: 'Introduce the single drawback with "However," and explain why using "as + [subject + verb]" (meaning "because"). Never follow "as" with an "-ing" fragment.',
+        formula: 'However, [drawback] as [subject + verb].',
+        wrongExample: 'However, it is more costly as requiring an initial setup fee.',
+        rightExample: 'However, it is more costly as it requires an initial setup fee.',
+        sentenceTokens: [
+          { text: 'However, it is more costly', isError: false },
+          { text: 'as requiring', isError: true, replacement: 'as it requires' },
+          { text: 'an initial setup fee.', isError: false }
+        ],
+        repairOptions: [
+          { text: 'as it requires', correct: true },
+          { text: 'as require', correct: false },
+          { text: 'because of it requires', correct: false }
+        ],
+        feedback: 'Perfect! "as" is a subordinating conjunction, so it must be followed by subject ("it") + verb ("requires").'
+      }
+    ];
+
+    const grammarState = {
+      activeIndex: 0,
+      shuffledOptions: {},
+      selectedOptionIdx: {},
+      answers: {},
+      showRuleHint: {}
+    };
+
+    // Fisher-Yates shuffle so correct answers appear at unpredictable positions
+    function shuffleRepairOptions() {
+      grammarKeyPoints.forEach((gp) => {
+        const cloned = gp.repairOptions.map((opt) => ({ ...opt }));
+        for (let i = cloned.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [cloned[i], cloned[j]] = [cloned[j], cloned[i]];
+        }
+        grammarState.shuffledOptions[gp.id] = cloned;
+      });
+    }
+
+    function goToGrammarPoint(idx) {
+      grammarState.activeIndex = Math.max(0, Math.min(grammarKeyPoints.length - 1, idx));
+      renderGrammarClinic();
+    }
+
+    function toggleGrammarRuleHint(gpId) {
+      grammarState.showRuleHint[gpId] = !grammarState.showRuleHint[gpId];
+      renderGrammarClinic();
+    }
+
+    function renderGrammarClinic() {
+      const container = document.getElementById('grammar-cards-container');
+      const pillNav = document.getElementById('grammar-pill-nav');
+      const totalMastered = grammarKeyPoints.filter((gp) => grammarState.answers[gp.id] === true).length;
+
+      document.getElementById('grammar-score-display').textContent = `${totalMastered} / ${grammarKeyPoints.length}`;
+      const banner = document.getElementById('grammar-complete-banner');
+      if (totalMastered === grammarKeyPoints.length) {
+        banner.classList.remove('hidden');
+      } else {
+        banner.classList.add('hidden');
+      }
+
+      // Render top 6-pill navigator
+      pillNav.innerHTML = grammarKeyPoints
+        .map((item, idx) => {
+          const isCurrent = idx === grammarState.activeIndex;
+          const isDone = grammarState.answers[item.id] === true;
+          let pillClass = 'border-slate-200 bg-stone-50 text-slate-600 hover:border-slate-300';
+          if (isCurrent) {
+            pillClass = 'border-indigo-600 bg-indigo-50 text-indigo-950 shadow-2xs';
+          } else if (isDone) {
+            pillClass = 'border-emerald-300 bg-emerald-50/70 text-emerald-900';
+          }
+          return `
+            <button type="button" onclick="goToGrammarPoint(${idx})"
+              class="px-2.5 py-2 rounded-xl border-2 text-center transition flex items-center justify-center gap-1 font-display font-bold text-xs ${pillClass}">
+              <span class="truncate">${item.shortLabel}</span>
+              ${isDone ? '<span class="text-emerald-600 shrink-0">✓</span>' : ''}
+            </button>
+          `;
+        })
+        .join('');
+
+      const gp = grammarKeyPoints[grammarState.activeIndex];
+      const idx = grammarState.activeIndex;
+      const ans = grammarState.answers[gp.id];
+      const chosenIdx = grammarState.selectedOptionIdx[gp.id];
+      const optionsList = grammarState.shuffledOptions[gp.id] || gp.repairOptions;
+      const isAnswered = ans !== undefined;
+      const isCorrect = ans === true;
+      const hintOpen = Boolean(grammarState.showRuleHint[gp.id]) || isCorrect;
+
+      const accentStyles = {
+        amber: 'bg-amber-100 text-amber-900 border-amber-200',
+        teal: 'bg-teal-100 text-teal-900 border-teal-200',
+        sky: 'bg-sky-100 text-sky-900 border-sky-200',
+        indigo: 'bg-indigo-100 text-indigo-900 border-indigo-200',
+        purple: 'bg-purple-100 text-purple-900 border-purple-200',
+        rose: 'bg-rose-100 text-rose-900 border-rose-200'
+      };
+
+      container.innerHTML = `
+        <article class="p-6 sm:p-8 rounded-3xl transition-colors ${
+          isCorrect
+            ? 'bg-emerald-50/35 border-2 border-emerald-400'
+            : 'bg-stone-50/80 border border-slate-200'
+        } space-y-6 unlock-animate">
+          <!-- Top Meta Row -->
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <span class="px-3 py-1 rounded-lg border text-xs font-bold uppercase tracking-wider ${accentStyles[gp.accent]}">
+              ${gp.badge}
+            </span>
+            <div class="flex items-center gap-2">
+              ${
+                isCorrect
+                  ? `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-600 text-white font-display font-bold text-xs shadow-2xs">
+                      <span>✓</span> Mastered
+                    </span>`
+                  : `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 border border-rose-200 font-display font-bold text-xs">
+                      <span>!</span> Needs Correction
+                    </span>`
+              }
+              <span class="text-xs font-bold text-slate-500">
+                Rule ${idx + 1} of ${grammarKeyPoints.length}
+              </span>
+            </div>
+          </div>
+
+          <!-- Title & Concise Explanation -->
+          <div class="space-y-2">
+            <h3 class="font-display font-bold text-xl sm:text-2xl text-slate-900">${gp.title}</h3>
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl">${gp.rule}</p>
+          </div>
+
+          <!-- Direct Error-Correction Stage -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-white border ${
+            isCorrect ? 'border-emerald-300' : 'border-rose-200'
+          } shadow-2xs space-y-5">
+
+            <!-- Unambiguous Action Header Banner -->
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b ${
+              isCorrect ? 'border-emerald-100' : 'border-rose-100'
+            }">
+              ${
+                isCorrect
+                  ? `<div class="inline-flex items-center gap-2 text-xs sm:text-sm font-display font-bold text-emerald-800">
+                      <span class="w-5 h-5 rounded-full bg-emerald-600 text-white inline-flex items-center justify-center text-xs">✓</span>
+                      <span>Sentence Corrected! Review the rule pattern below.</span>
+                    </div>`
+                  : `<div class="inline-flex items-center gap-2 text-xs sm:text-sm font-display font-bold text-rose-800">
+                      <span class="w-5 h-5 rounded-full bg-rose-600 text-white inline-flex items-center justify-center text-xs">✕</span>
+                      <span>Fix the Mistake: Choose the right option to replace the red error below.</span>
+                    </div>`
+              }
+
+              <button type="button" onclick="toggleGrammarRuleHint('${gp.id}')"
+                class="text-xs font-bold text-slate-500 hover:text-indigo-700 underline shrink-0">
+                ${hintOpen ? 'Hide Pattern & Examples' : 'Need a Hint? Show Pattern'}
+              </button>
+            </div>
+
+            <!-- Sentence Display: Unmistakable Red Error Highlight -> Green Corrected Pill -->
+            <div class="p-4 sm:p-5 rounded-xl border ${
+              isCorrect
+                ? 'bg-emerald-50/50 border-emerald-200'
+                : 'bg-rose-50/40 border-rose-200'
+            } text-base sm:text-lg leading-[2.2] text-slate-800">
+              ${gp.sentenceTokens
+                .map((tok) => {
+                  if (!tok.isError) {
+                    return `<span>${escapeHtml(tok.text)} </span>`;
+                  }
+                  if (isCorrect) {
+                    const cleanReplacement = tok.replacement || optionsList.find((o) => o.correct).text;
+                    return `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 mx-0.5 rounded-lg bg-emerald-100 border-2 border-emerald-500 text-emerald-950 font-bold align-baseline shadow-2xs">
+                      <span class="text-emerald-700 text-xs font-extrabold">✓</span>
+                      <span>${escapeHtml(cleanReplacement)}</span>
+                    </span> `;
+                  }
+                  return `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 mx-0.5 rounded-lg bg-rose-100 border-2 border-dashed border-rose-500 text-rose-900 font-bold align-baseline" title="Incorrect grammar — choose the right option below to fix">
+                    <span class="text-[10px] uppercase tracking-wider font-extrabold px-1.5 py-0.2 rounded bg-rose-600 text-white leading-tight">✕ error</span>
+                    <span class="line-through decoration-rose-600 decoration-2">${escapeHtml(tok.text)}</span>
+                  </span> `;
+                })
+                .join('')}
+            </div>
+
+            <!-- Immediate 3 Shuffled Multiple-Choice Replacement Options -->
+            <div class="space-y-2.5">
+              <span class="block text-xs font-bold uppercase tracking-wider text-slate-500">
+                Select the correct replacement:
+              </span>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                ${optionsList
+                  .map((opt, optIdx) => {
+                    const isThisChosen = chosenIdx === optIdx;
+                    let style = 'border-slate-200 bg-stone-50 text-slate-800 hover:border-indigo-500 hover:bg-indigo-50/40 cursor-pointer';
+
+                    if (isCorrect) {
+                      if (opt.correct) {
+                        style = 'border-emerald-500 bg-emerald-50 text-emerald-950 font-bold shadow-2xs';
+                      } else {
+                        style = 'border-slate-200 bg-stone-100 text-slate-400 opacity-60';
+                      }
+                    } else if (isAnswered && isThisChosen && !opt.correct) {
+                      style = 'border-rose-500 bg-rose-50 text-rose-900 font-semibold';
+                    }
+
+                    return `
+                      <button type="button" onclick="answerGrammarDrill('${gp.id}', ${optIdx}, ${opt.correct})"
+                        class="p-3.5 rounded-xl border-2 text-center text-xs sm:text-sm font-semibold transition flex items-center justify-center gap-2 ${style}">
+                        <span>${escapeHtml(opt.text)}</span>
+                        ${isCorrect && opt.correct ? '<span class="text-emerald-700 font-extrabold">✓</span>' : ''}
+                        ${!isCorrect && isThisChosen ? '<span class="text-rose-600 font-extrabold">✕</span>' : ''}
+                      </button>
+                    `;
+                  })
+                  .join('')}
+              </div>
+            </div>
+
+            <!-- Immediate Feedback Message + Prominent Next Rule CTA on Success -->
+            ${
+              isAnswered
+                ? `<div class="p-4 rounded-xl text-xs sm:text-sm font-medium flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${
+                    isCorrect
+                      ? 'bg-emerald-100/80 text-emerald-950 border border-emerald-300'
+                      : 'bg-rose-100/80 text-rose-950 border border-rose-300'
+                  }">
+                    <span>
+                      ${
+                        isCorrect
+                          ? '✓ ' + gp.feedback
+                          : '✕ Not quite—that option still has a grammar issue. Check the rule explanation above and pick another option!'
+                      }
+                    </span>
+                    ${
+                      isCorrect && idx < grammarKeyPoints.length - 1
+                        ? `<button type="button" onclick="goToGrammarPoint(${idx + 1})"
+                            class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-display font-bold text-xs sm:text-sm shadow-2xs shrink-0 transition">
+                            Next Grammar Rule →
+                          </button>`
+                        : ''
+                    }
+                  </div>`
+                : ''
+            }
+          </div>
+
+          <!-- Collapsible / Auto-Revealed Pattern & Avoid vs Model Comparison -->
+          ${
+            hintOpen
+              ? `<div class="p-5 rounded-2xl bg-white border border-slate-200/90 space-y-3 unlock-animate">
+                  <div>
+                    <span class="block font-bold uppercase tracking-wider text-slate-400 text-[10px]">Sentence Pattern</span>
+                    <code class="font-mono text-xs sm:text-sm text-slate-800 font-semibold mt-1 block">${gp.formula}</code>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs sm:text-sm">
+                    <div class="p-3 rounded-xl bg-rose-50/70 border border-rose-200/70 text-rose-950">
+                      <span class="font-bold block text-[11px] uppercase tracking-wider text-rose-700 mb-0.5">✕ Avoid</span>
+                      ${gp.wrongExample}
+                    </div>
+                    <div class="p-3 rounded-xl bg-emerald-50/70 border border-emerald-200/70 text-emerald-950">
+                      <span class="font-bold block text-[11px] uppercase tracking-wider text-emerald-700 mb-0.5">✓ Model</span>
+                      ${gp.rightExample}
+                    </div>
+                  </div>
+                </div>`
+              : ''
+          }
+
+          <!-- Spacious Single-Point Prev / Next Controls -->
+          <div class="flex items-center justify-between pt-2">
+            <button type="button" onclick="goToGrammarPoint(${idx - 1})" ${idx === 0 ? 'disabled' : ''}
+              class="px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 disabled:opacity-40 disabled:pointer-events-none text-slate-700 font-display font-bold text-xs sm:text-sm transition">
+              ← Previous Rule
+            </button>
+
+            ${
+              idx < grammarKeyPoints.length - 1
+                ? `<button type="button" onclick="goToGrammarPoint(${idx + 1})"
+                    class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-display font-bold text-xs sm:text-sm shadow-2xs transition">
+                    Next Grammar Rule (${idx + 2}/6) →
+                  </button>`
+                : `<span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1.5 rounded-lg">
+                    Final Rule (6 of 6)
+                  </span>`
+            }
+          </div>
+        </article>
+      `;
+    }
+
+    let hasShownStep3Modal = false;
+
+    function answerGrammarDrill(gpId, optIdx, isCorrect) {
+      grammarState.selectedOptionIdx[gpId] = optIdx;
+      grammarState.answers[gpId] = isCorrect;
+      renderGrammarClinic();
+      if (isCorrect) {
+        const totalMastered = grammarKeyPoints.filter((gp) => grammarState.answers[gp.id] === true).length;
+        if (totalMastered === grammarKeyPoints.length && !hasShownStep3Modal) {
+          hasShownStep3Modal = true;
+          setTimeout(() => toggleNextStepsModal(true), 450);
+        } else {
+          showToast('Grammar rule mastered!');
+        }
+      } else {
+        showToast('Not quite—try another option.');
+      }
+    }
+
+    function resetGrammarClinic() {
+      grammarState.activeIndex = 0;
+      grammarState.selectedOptionIdx = {};
+      grammarState.answers = {};
+      grammarState.showRuleHint = {};
+      hasShownStep3Modal = false;
+      shuffleRepairOptions();
+      renderGrammarClinic();
+      showToast('Grammar clinic reset and options shuffled.');
+    }
+
+    // =========================================================================
+    // STEP 1: QUIZ ENGINE (4 CORE STRUCTURE QUESTIONS IN PARAGRAPH ORDER)
+    // =========================================================================
+    const quizQuestions = [
+      {
+        id: 1,
+        paragraph: 'Paragraph 1 · Purpose',
+        question: 'What should you write in the introduction (Paragraph 1)?',
+        options: [
+          { text: 'Purpose of writing (stating your preference and reasons for choice without revealing the final pick yet)', correct: true },
+          { text: 'Your final preference and a detailed comparison of both options', correct: false }
+        ],
+        explanation: 'Correct! Paragraph 1 states your purpose of writing and gives reasons for your choice clearly without giving away your final recommendation prematurely.'
+      },
+      {
+        id: 2,
+        paragraph: 'Paragraph 2 · Naming Options',
+        question: 'Which of the following words can be used to introduce the two options mentioned in your email?',
+        options: [
+          { text: 'namely (e.g. "...namely City Tickets and TicketEasy.")', correct: true },
+          { text: 'names (e.g. "...names City Tickets and TicketEasy.")', correct: false }
+        ],
+        explanation: 'Correct! Always use "namely" (never "names") to specify the exact two options researched.'
+      },
+      {
+        id: 3,
+        paragraph: 'Paragraph 2 · Background vs Comparison',
+        question: 'In the second paragraph of your email, what should you write?',
+        options: [
+          { text: 'A neutral description of the background of the two options', correct: true },
+          { text: 'A direct comparison and evaluation of which option is better', correct: false }
+        ],
+        explanation: 'Correct! Paragraph 2 provides neutral background facts for both options separately. Comparisons are reserved for Paragraph 3.'
+      },
+      {
+        id: 4,
+        paragraph: 'Paragraph 3 · Non-Preferred Option Rule',
+        question: 'For the non-preferred option in Paragraph 3, what do you need to talk about?',
+        options: [
+          { text: 'One of the concerns given in the task guidelines ("However... as...")', correct: true },
+          { text: 'All of the concerns given in the task guidelines', correct: false }
+        ],
+        explanation: 'Correct! Select only one major concern for the non-preferred option rather than listing every flaw.'
+      }
+    ];
+
+    const quizStateData = {
+      answers: {},
+      correctCount: 0
+    };
+
+    function renderQuiz() {
+      const container = document.getElementById('quiz-container');
+      let answeredCount = 0;
+      let correctCount = 0;
+
+      container.innerHTML = quizQuestions.map((q, idx) => {
+        const userAns = quizStateData.answers[q.id];
+        const isAnswered = userAns !== undefined;
+        if (isAnswered) answeredCount++;
+        const isCorrect = userAns === true;
+        if (isCorrect) correctCount++;
+
+        return `
+          <div class="p-4 sm:p-5 rounded-2xl bg-stone-50 border ${
+            isAnswered ? (isCorrect ? 'border-emerald-300 bg-emerald-50/20' : 'border-rose-300 bg-rose-50/20') : 'border-slate-200'
+          } space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider text-amber-900">${q.paragraph}</span>
+              <span class="text-xs font-semibold text-slate-500">Question ${idx + 1} of 4</span>
+            </div>
+            <h3 class="font-display font-bold text-sm sm:text-base text-slate-900">${q.question}</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+              ${q.options.map((opt) => {
+                const isSelected = userAns === opt.correct;
+                let btnStyle = 'border-slate-200 bg-white text-slate-700 hover:border-amber-400';
+                if (isAnswered) {
+                  if (opt.correct) {
+                    btnStyle = 'border-emerald-500 bg-emerald-50 text-emerald-950 font-semibold';
+                  } else if (isSelected && !opt.correct) {
+                    btnStyle = 'border-rose-400 bg-rose-50 text-rose-900';
+                  } else {
+                    btnStyle = 'border-slate-200 bg-stone-100 text-slate-400 opacity-60';
+                  }
+                }
+                return `
+                  <button type="button" onclick="answerQuiz(${q.id}, ${opt.correct})"
+                    class="p-3.5 rounded-xl border-2 text-left text-xs sm:text-sm transition flex items-center justify-between gap-2 ${btnStyle}">
+                    <span>${opt.text}</span>
+                    <span class="font-bold shrink-0">${isAnswered && opt.correct ? '✓' : ''}</span>
+                  </button>
+                `;
+              }).join('')}
+            </div>
+            ${isAnswered ? `
+              <div class="p-3 rounded-xl text-xs sm:text-sm font-medium ${isCorrect ? 'bg-emerald-100/70 text-emerald-900 border border-emerald-200' : 'bg-rose-100/70 text-rose-900 border border-rose-200'}">
+                ${isCorrect ? '✓ ' + q.explanation : '✕ Not quite. ' + q.explanation}
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('quiz-progress-display').textContent = `Answered ${answeredCount} of 4`;
+      const banner = document.getElementById('quiz-mastered-banner');
+      if (correctCount === 4) {
+        banner.classList.remove('hidden');
+      } else {
+        banner.classList.add('hidden');
+      }
+    }
+
+    function answerQuiz(qid, isCorrect) {
+      quizStateData.answers[qid] = isCorrect;
+      renderQuiz();
+      if (isCorrect) {
+        showToast('Correct rule checked!');
+      } else {
+        showToast('Incorrect. Check the explanation and try again.');
+      }
+    }
+
+    function resetQuiz() {
+      quizStateData.answers = {};
+      renderQuiz();
+      showToast('Step 1 quiz reset.');
+    }
+
+    // =========================================================================
+    // STEP 2: CLOZE REVISION ENGINE (PART A & PART B)
+    // =========================================================================
+    let currentClozePart = 'A';
+
+    const clozeData = {
+      A: {
+        blanks: ['preference', 'reasons', 'namely', 'it is the', 'it provides', 'it is a'],
+        bank: ['reasons', 'it is a', 'preference', 'namely', 'it provides', 'it is the'],
+        slots: { 0: null, 1: null, 2: null, 3: null, 4: null, 5: null },
+        selectedChip: null,
+        checked: false
+      },
+      B: {
+        blanks: ['I would prefer', 'It provides', 'which', 'so', 'On the other hand', 'so', 'However', 'as'],
+        bank: ['so', 'which', 'However', 'as', 'It provides', 'On the other hand', 'so', 'I would prefer'],
+        slots: { 0: null, 1: null, 2: null, 3: null, 4: null, 5: null, 6: null, 7: null },
+        selectedChip: null,
+        checked: false
+      }
+    };
+
+    function switchClozePart(part) {
+      currentClozePart = part;
+      const tabA = document.getElementById('cloze-subtab-A');
+      const tabB = document.getElementById('cloze-subtab-B');
+      const docA = document.getElementById('cloze-doc-A');
+      const docB = document.getElementById('cloze-doc-B');
+      const annA = document.getElementById('annotations-part-A');
+      const annB = document.getElementById('annotations-part-B');
+      const switchBtn = document.getElementById('btn-switch-subpart');
+      const bankTitle = document.getElementById('word-bank-title');
+
+      if (part === 'A') {
+        tabA.className = 'py-2.5 px-3 rounded-lg font-display font-bold text-xs sm:text-sm bg-white text-teal-900 shadow-2xs transition flex items-center justify-center gap-2';
+        tabB.className = 'py-2.5 px-3 rounded-lg font-display font-bold text-xs sm:text-sm text-slate-600 hover:text-slate-900 transition flex items-center justify-center gap-2';
+        docA.classList.remove('hidden');
+        docB.classList.add('hidden');
+        annA.classList.remove('hidden');
+        annB.classList.add('hidden');
+        bankTitle.textContent = 'Part 1 Word Bank (Paragraphs 1 & 2)';
+        switchBtn.textContent = 'Continue to Part 2 →';
+        switchBtn.onclick = () => switchClozePart('B');
+      } else {
+        tabB.className = 'py-2.5 px-3 rounded-lg font-display font-bold text-xs sm:text-sm bg-white text-indigo-900 shadow-2xs transition flex items-center justify-center gap-2';
+        tabA.className = 'py-2.5 px-3 rounded-lg font-display font-bold text-xs sm:text-sm text-slate-600 hover:text-slate-900 transition flex items-center justify-center gap-2';
+        docB.classList.remove('hidden');
+        docA.classList.add('hidden');
+        annB.classList.remove('hidden');
+        annA.classList.add('hidden');
+        bankTitle.textContent = 'Part 2 Word Bank (Paragraphs 3 & 4)';
+        switchBtn.textContent = '← Back to Part 1';
+        switchBtn.onclick = () => switchClozePart('A');
+      }
+
+      document.getElementById('cloze-feedback').classList.add('hidden');
+      renderCloze();
+    }
+
+    function renderCloze() {
+      const partObj = clozeData[currentClozePart];
+      const bankEl = document.getElementById('word-bank');
+
+      const usedBankIndices = new Set(
+        Object.values(partObj.slots)
+          .filter((v) => v !== null)
+          .map((v) => v.bankIdx)
+      );
+
+      bankEl.innerHTML = partObj.bank
+        .map((phrase, idx) => {
+          const isUsed = usedBankIndices.has(idx);
+          const isSelected = partObj.selectedChip === idx;
+          return `
+            <button type="button"
+              draggable="${!isUsed}"
+              ondragstart="handleDragStart(event, ${idx})"
+              onclick="selectWordChip(${idx})"
+              class="word-chip px-3.5 py-1.5 rounded-xl border-2 font-semibold text-xs sm:text-sm bg-white border-amber-300 text-slate-900 hover:border-amber-500 ${
+                isSelected ? 'selected' : ''
+              } ${isUsed ? 'used' : ''}">
+              ${escapeHtml(phrase)}
+            </button>
+          `;
+        })
+        .join('');
+
+      ['A', 'B'].forEach((pKey) => {
+        const pData = clozeData[pKey];
+        Object.keys(pData.slots).forEach((sIdxStr) => {
+          const sIdx = Number(sIdxStr);
+          const slotEl = document.querySelector(`.drop-slot[data-part="${pKey}"][data-slot="${sIdx}"]`);
+          if (!slotEl) return;
+
+          const entry = pData.slots[sIdx];
+          slotEl.classList.remove('filled', 'correct', 'incorrect', 'active-target');
+
+          if (entry === null) {
+            slotEl.textContent = `${sIdx + 1}`;
+            if (pKey === currentClozePart && pData.selectedChip !== null) {
+              slotEl.classList.add('active-target');
+            }
+          } else {
+            slotEl.textContent = entry.text;
+            slotEl.classList.add('filled');
+            if (pData.checked) {
+              if (entry.text === pData.blanks[sIdx]) {
+                slotEl.classList.add('correct');
+              } else {
+                slotEl.classList.add('incorrect');
+              }
+            }
+          }
+        });
+      });
+
+      updateClozeScoreBadges();
+    }
+
+    function selectWordChip(bankIdx) {
+      const partObj = clozeData[currentClozePart];
+      partObj.selectedChip = partObj.selectedChip === bankIdx ? null : bankIdx;
+      renderCloze();
+    }
+
+    function handleDragStart(event, bankIdx) {
+      clozeData[currentClozePart].selectedChip = bankIdx;
+      event.dataTransfer.setData('text/plain', String(bankIdx));
+    }
+
+    function handleDragOver(event) {
+      event.preventDefault();
+    }
+
+    function handleDrop(event, part, slotIdx) {
+      event.preventDefault();
+      const rawIdx = event.dataTransfer.getData('text/plain');
+      const bankIdx = rawIdx !== '' ? Number(rawIdx) : clozeData[part].selectedChip;
+      if (bankIdx === null || Number.isNaN(bankIdx)) return;
+      placeWordInSlot(part, slotIdx, bankIdx);
+    }
+
+    function handleSlotClick(part, slotIdx) {
+      const partObj = clozeData[part];
+      if (partObj.selectedChip !== null) {
+        placeWordInSlot(part, slotIdx, partObj.selectedChip);
+        return;
+      }
+      if (partObj.slots[slotIdx] !== null) {
+        partObj.slots[slotIdx] = null;
+        partObj.checked = false;
+        document.getElementById('cloze-feedback').classList.add('hidden');
+        renderCloze();
+      } else {
+        showToast('Tap a phrase in the Word Bank above first!');
+      }
+    }
+
+    function placeWordInSlot(part, slotIdx, bankIdx) {
+      const partObj = clozeData[part];
+      Object.keys(partObj.slots).forEach((k) => {
+        if (partObj.slots[k] && partObj.slots[k].bankIdx === bankIdx) {
+          partObj.slots[k] = null;
+        }
+      });
+
+      partObj.slots[slotIdx] = {
+        bankIdx,
+        text: partObj.bank[bankIdx]
+      };
+      partObj.selectedChip = null;
+      partObj.checked = false;
+      document.getElementById('cloze-feedback').classList.add('hidden');
+      renderCloze();
+    }
+
+    function checkActiveCloze() {
+      const partObj = clozeData[currentClozePart];
+      partObj.checked = true;
+      renderCloze();
+
+      const total = partObj.blanks.length;
+      let correct = 0;
+      partObj.blanks.forEach((ans, idx) => {
+        if (partObj.slots[idx] && partObj.slots[idx].text === ans) {
+          correct++;
+        }
+      });
+
+      const fbBox = document.getElementById('cloze-feedback');
+      const fbText = document.getElementById('cloze-feedback-text');
+      const fbBtn = document.getElementById('cloze-next-action-btn');
+
+      fbBox.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-900', 'border', 'border-emerald-200', 'bg-amber-50', 'text-amber-950', 'border-amber-200');
+
+      if (correct === total) {
+        fbBox.classList.add('bg-emerald-50', 'text-emerald-900', 'border', 'border-emerald-200');
+        fbText.textContent = `✓ Well done! All ${total} blanks in Part ${currentClozePart === 'A' ? '1' : '2'} are correct.`;
+        fbBtn.classList.remove('hidden');
+        if (currentClozePart === 'A') {
+          fbBtn.textContent = 'Continue to Part 2 →';
+          fbBtn.onclick = () => switchClozePart('B');
+        } else {
+          fbBtn.textContent = 'Continue to Step 3: Grammar Key Points →';
+          fbBtn.onclick = () => switchStep(3);
+        }
+      } else {
+        fbBox.classList.add('bg-amber-50', 'text-amber-950', 'border', 'border-amber-200');
+        fbText.textContent = `You got ${correct} out of ${total} blanks right. Tap any red box to remove it and try again.`;
+        fbBtn.classList.add('hidden');
+      }
+    }
+
+    function showActiveClozeSolution() {
+      const partObj = clozeData[currentClozePart];
+      const usedIdx = new Set();
+
+      partObj.blanks.forEach((ans, sIdx) => {
+        const foundBankIdx = partObj.bank.findIndex((bText, bIdx) => bText === ans && !usedIdx.has(bIdx));
+        usedIdx.add(foundBankIdx);
+        partObj.slots[sIdx] = { bankIdx: foundBankIdx, text: ans };
+      });
+
+      partObj.selectedChip = null;
+      partObj.checked = true;
+      renderCloze();
+      checkActiveCloze();
+    }
+
+    function resetActiveCloze() {
+      const partObj = clozeData[currentClozePart];
+      Object.keys(partObj.slots).forEach((k) => {
+        partObj.slots[k] = null;
+      });
+      partObj.selectedChip = null;
+      partObj.checked = false;
+      document.getElementById('cloze-feedback').classList.add('hidden');
+      renderCloze();
+    }
+
+    function updateClozeScoreBadges() {
+      let correctA = 0;
+      clozeData.A.blanks.forEach((ans, idx) => {
+        if (clozeData.A.slots[idx] && clozeData.A.slots[idx].text === ans) correctA++;
+      });
+
+      let correctB = 0;
+      clozeData.B.blanks.forEach((ans, idx) => {
+        if (clozeData.B.slots[idx] && clozeData.B.slots[idx].text === ans) correctB++;
+      });
+
+      const totalMastered = correctA + correctB;
+      document.getElementById('cloze-mastered-count').textContent = `${totalMastered}`;
+
+      const badgeA = document.getElementById('badge-part-A');
+      badgeA.textContent = `${correctA}/6`;
+      badgeA.className = correctA === 6
+        ? 'px-2 py-0.5 rounded-full text-[11px] bg-emerald-100 text-emerald-800'
+        : 'px-2 py-0.5 rounded-full text-[11px] bg-stone-200 text-slate-700';
+
+      const badgeB = document.getElementById('badge-part-B');
+      badgeB.textContent = `${correctB}/8`;
+      badgeB.className = correctB === 8
+        ? 'px-2 py-0.5 rounded-full text-[11px] bg-emerald-100 text-emerald-800'
+        : 'px-2 py-0.5 rounded-full text-[11px] bg-stone-200 text-slate-700';
+
+      const completeBanner = document.getElementById('cloze-complete-banner');
+      if (completeBanner) {
+        if (totalMastered === 14) {
+          completeBanner.classList.remove('hidden');
+        } else {
+          completeBanner.classList.add('hidden');
+        }
+      }
+    }
+
+    // =========================================================================
+    // COLOURED PNG STUDY CARD GENERATOR (STEP 2 & STEP 3)
+    // =========================================================================
+    function drawRoundedRectPath(ctx, x, y, width, height, radius) {
+      const r = Math.min(radius, width / 2, height / 2);
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + width, y, x + width, y + height, r);
+      ctx.arcTo(x + width, y + height, x, y + height, r);
+      ctx.arcTo(x, y + height, x, y, r);
+      ctx.arcTo(x, y, x + width, y, r);
+      ctx.closePath();
+    }
+
+    function wrapCanvasLines(ctx, text, maxWidth) {
+      const words = text.split(/\s+/);
+      const lines = [];
+      let currentLine = '';
+
+      words.forEach((word) => {
+        const testLine = currentLine ? `${currentLine} ${word}` : word;
+        if (ctx.measureText(testLine).width <= maxWidth) {
+          currentLine = testLine;
+        } else {
+          if (currentLine) lines.push(currentLine);
+          currentLine = word;
+        }
+      });
+
+      if (currentLine) lines.push(currentLine);
+      return lines;
+    }
+
+    function drawRichParagraphText(ctx, segments, x, startY, maxWidth, lineHeight, baseFont, boldFont, baseColor, highlightBg, highlightText) {
+      const tokens = [];
+      segments.forEach((seg) => {
+        const parts = seg.text.split(/(\s+)/);
+        parts.forEach((part) => {
+          if (part.length > 0) {
+            tokens.push({ text: part, highlight: Boolean(seg.highlight) });
+          }
+        });
+      });
+
+      let curX = x;
+      let curY = startY;
+      let lineCount = 1;
+
+      tokens.forEach((tok) => {
+        const isSpace = /^\s+$/.test(tok.text);
+        ctx.font = tok.highlight ? boldFont : baseFont;
+        const wordWidth = ctx.measureText(tok.text).width;
+
+        if (!isSpace && curX > x && curX + wordWidth > x + maxWidth) {
+          curX = x;
+          curY += lineHeight;
+          lineCount++;
+        }
+
+        if (isSpace && curX === x) {
+          return;
+        }
+
+        if (tok.highlight && !isSpace) {
+          ctx.fillStyle = highlightBg;
+          drawRoundedRectPath(ctx, curX - 4, curY - 21, wordWidth + 8, 28, 6);
+          ctx.fill();
+          ctx.fillStyle = highlightText;
+          ctx.fillText(tok.text, curX, curY);
+        } else {
+          ctx.fillStyle = baseColor;
+          ctx.fillText(tok.text, curX, curY);
+        }
+
+        curX += wordWidth;
+      });
+
+      return lineCount;
+    }
+
+    function downloadCanvasAsPng(canvas, filename) {
+      canvas.toBlob((blob) => {
+        if (!blob) return;
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setTimeout(() => URL.revokeObjectURL(url), 1200);
+      }, 'image/png');
+    }
+
+    function downloadCompletedEmail() {
+      const width = 1080;
+      const padX = 56;
+      const cardWidth = width - padX * 2;
+      const innerPadX = 32;
+      const textMaxW = cardWidth - innerPadX * 2 - 12;
+
+      const paragraphs = [
+        {
+          label: 'PARAGRAPH 1 · PURPOSE OF WRITING',
+          accent: '#D97706',
+          bg: '#FFFBEB',
+          border: '#FDE68A',
+          pillBg: '#FEF3C7',
+          pillText: '#92400E',
+          segments: [
+            { text: 'I am writing to state my ' },
+            { text: 'preference', highlight: true },
+            { text: ' for the event ticketing platform and give ' },
+            { text: 'reasons', highlight: true },
+            { text: ' for my choice.' }
+          ]
+        },
+        {
+          label: 'PARAGRAPH 2 · BACKGROUND DESCRIPTION OF BOTH OPTIONS',
+          accent: '#0D9488',
+          bg: '#F0FDFA',
+          border: '#99F6E4',
+          pillBg: '#CCFBF1',
+          pillText: '#115E59',
+          segments: [
+            { text: 'I have collected some information about the two ticketing platforms, ' },
+            { text: 'namely', highlight: true },
+            { text: ' City Tickets and TicketEasy. Regarding City Tickets, ' },
+            { text: 'it is the', highlight: true },
+            { text: ' most popular ticketing site in Hong Kong and ' },
+            { text: 'it provides', highlight: true },
+            { text: ' ticketing services for government events. For TicketEasy, ' },
+            { text: 'it is a', highlight: true },
+            { text: ' well-established ticketing platform.' }
+          ]
+        },
+        {
+          label: 'PARAGRAPH 3 · PREFERENCE, REASONS & ONE CONCERN',
+          accent: '#4F46E5',
+          bg: '#EEF2FF',
+          border: '#C7D2FE',
+          pillBg: '#E0E7FF',
+          pillText: '#3730A3',
+          segments: [
+            { text: 'After comparison, ' },
+            { text: 'I would prefer', highlight: true },
+            { text: ' City Tickets. ' },
+            { text: 'It provides', highlight: true },
+            { text: ' a variety of optional services, ' },
+            { text: 'which', highlight: true },
+            { text: ' include a 24/7 live hotline and website integration, ' },
+            { text: 'so', highlight: true },
+            { text: ' we can provide instant responses for customers. ' },
+            { text: 'On the other hand', highlight: true },
+            { text: ', TicketEasy is not preferred. It offers both browser and mobile app access, ' },
+            { text: 'so', highlight: true },
+            { text: ' it is convenient for customers. ' },
+            { text: 'However', highlight: true },
+            { text: ', it is more costly ' },
+            { text: 'as', highlight: true },
+            { text: ' it requires an initial setup fee.' }
+          ]
+        },
+        {
+          label: 'PARAGRAPH 4 · POLITE CLOSING & SIGN-OFF',
+          accent: '#059669',
+          bg: '#ECFDF5',
+          border: '#A7F3D0',
+          pillBg: '#D1FAE5',
+          pillText: '#065F46',
+          segments: [
+            { text: 'I hope these ideas are useful to you. Please feel free to contact me if you have any questions.' }
+          ],
+          signOff: ['Regards', 'Mike']
+        }
+      ];
+
+      // Measure total canvas height cleanly before rendering
+      const measureCanvas = document.createElement('canvas');
+      const mCtx = measureCanvas.getContext('2d');
+      const baseFont = '400 22px Inter, system-ui, sans-serif';
+      const boldFont = '700 22px Inter, system-ui, sans-serif';
+      const lineHeight = 36;
+
+      paragraphs.forEach((p) => {
+        const plain = p.segments.map((s) => s.text).join('');
+        mCtx.font = boldFont;
+        const lines = wrapCanvasLines(mCtx, plain, textMaxW);
+        // Add 1 safety line for pill padding width
+        const estimatedLines = lines.length + 1;
+        let boxH = 54 + estimatedLines * lineHeight + 24;
+        if (p.signOff) boxH += 68;
+        p.boxHeight = boxH;
+      });
+
+      const headerHeight = 168;
+      const metaBarHeight = 56;
+      const salutationHeight = 52;
+      const cardsGap = 20;
+      const totalCardsH = paragraphs.reduce((acc, p) => acc + p.boxHeight, 0) + cardsGap * (paragraphs.length - 1);
+      const footerHeight = 64;
+      const totalHeight = headerHeight + metaBarHeight + salutationHeight + totalCardsH + footerHeight + 56;
+
+      const dpr = 2;
+      const canvas = document.createElement('canvas');
+      canvas.width = width * dpr;
+      canvas.height = totalHeight * dpr;
+      const ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+
+      // Warm background
+      ctx.fillStyle = '#FAF8F5';
+      ctx.fillRect(0, 0, width, totalHeight);
+
+      // Top Teal-to-Emerald Header Banner
+      const grad = ctx.createLinearGradient(0, 0, width, headerHeight);
+      grad.addColorStop(0, '#0F766E');
+      grad.addColorStop(1, '#059669');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, width, headerHeight);
+
+      // Decorative subtle circle in header
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.beginPath();
+      ctx.arc(width - 90, 40, 120, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Header Badge
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.18)';
+      drawRoundedRectPath(ctx, padX, 32, 360, 32, 8);
+      ctx.fill();
+      ctx.fillStyle = '#ECFDF5';
+      ctx.font = '700 13px "Plus Jakarta Sans", Inter, sans-serif';
+      ctx.fillText('VOCATIONAL ENGLISH · WORKPLACE WRITING', padX + 14, 53);
+
+      // Header Title
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = '800 34px "Plus Jakarta Sans", Inter, sans-serif';
+      ctx.fillText('Model Email: Event Ticketing Platform', padX, 106);
+
+      ctx.fillStyle = '#D1FAE5';
+      ctx.font = '500 18px Inter, sans-serif';
+      ctx.fillText('Completed 4-Paragraph Guided Writing Reference (Highlighted Key Phrases)', padX, 140);
+
+      // Metadata Bar
+      let cursorY = headerHeight + 24;
+      ctx.fillStyle = '#FFFFFF';
+      drawRoundedRectPath(ctx, padX, cursorY, cardWidth, metaBarHeight, 14);
+      ctx.fill();
+      ctx.strokeStyle = '#E2E8F0';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      ctx.fillStyle = '#475569';
+      ctx.font = '600 16px Inter, sans-serif';
+      ctx.fillText('To: May     |     From: Mike     |     Subject: Recommendation on Event Ticketing Platform', padX + 24, cursorY + 34);
+
+      cursorY += metaBarHeight + 24;
+
+      // Salutation
+      ctx.fillStyle = '#0F172A';
+      ctx.font = '700 22px Inter, sans-serif';
+      ctx.fillText('Dear May', padX + 8, cursorY + 26);
+      cursorY += salutationHeight;
+
+      // Render Each Colour-Coded Paragraph Card
+      paragraphs.forEach((p) => {
+        ctx.fillStyle = '#FFFFFF';
+        drawRoundedRectPath(ctx, padX, cursorY, cardWidth, p.boxHeight, 18);
+        ctx.fill();
+        ctx.strokeStyle = p.border;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Left colour accent bar
+        ctx.fillStyle = p.accent;
+        drawRoundedRectPath(ctx, padX, cursorY, 10, p.boxHeight, 6);
+        ctx.fill();
+
+        // Label pill
+        ctx.fillStyle = p.bg;
+        drawRoundedRectPath(ctx, padX + innerPadX, cursorY + 18, cardWidth - innerPadX * 2, 30, 8);
+        ctx.fill();
+
+        ctx.fillStyle = p.accent;
+        ctx.font = '800 13px "Plus Jakarta Sans", Inter, sans-serif';
+        ctx.fillText(p.label, padX + innerPadX + 12, cursorY + 38);
+
+        // Rich text body
+        const linesDrawn = drawRichParagraphText(
+          ctx,
+          p.segments,
+          padX + innerPadX,
+          cursorY + 84,
+          textMaxW,
+          lineHeight,
+          baseFont,
+          boldFont,
+          '#1E293B',
+          p.pillBg,
+          p.pillText
+        );
+
+        if (p.signOff) {
+          const signY = cursorY + 84 + linesDrawn * lineHeight + 14;
+          ctx.fillStyle = '#0F172A';
+          ctx.font = '700 22px Inter, sans-serif';
+          ctx.fillText(p.signOff[0], padX + innerPadX, signY);
+          ctx.fillText(p.signOff[1], padX + innerPadX, signY + 32);
+        }
+
+        cursorY += p.boxHeight + cardsGap;
+      });
+
+      // Footer
+      ctx.fillStyle = '#64748B';
+      ctx.font = '600 15px Inter, sans-serif';
+      ctx.fillText('Guided Email Writing Studio · Revision Reference Card', padX, totalHeight - 26);
+
+      downloadCanvasAsPng(canvas, 'Model_Email_Event_Ticketing_Platform.png');
+      showToast('Coloured Model Email image downloaded!');
+    }
+
+    function downloadGrammarSummary() {
+      const width = 1120;
+      const padX = 52;
+      const colGap = 24;
+      const colWidth = (width - padX * 2 - colGap) / 2;
+      const innerPad = 24;
+      const contentW = colWidth - innerPad * 2;
+
+      const accentPalette = {
+        amber: { main: '#D97706', bg: '#FFFBEB', border: '#FDE68A', badgeBg: '#FEF3C7', badgeText: '#92400E' },
+        teal: { main: '#0D9488', bg: '#F0FDFA', border: '#99F6E4', badgeBg: '#CCFBF1', badgeText: '#115E59' },
+        sky: { main: '#0284C7', bg: '#F0F9FF', border: '#BAE6FD', badgeBg: '#E0F2FE', badgeText: '#075985' },
+        indigo: { main: '#4F46E5', bg: '#EEF2FF', border: '#C7D2FE', badgeBg: '#E0E7FF', badgeText: '#3730A3' },
+        purple: { main: '#7C3AED', bg: '#F5F3FF', border: '#DDD6FE', badgeBg: '#EDE9FE', badgeText: '#5B21B6' },
+        rose: { main: '#E11D48', bg: '#FFF1F2', border: '#FECDD3', badgeBg: '#FFE4E6', badgeText: '#9F1239' }
+      };
+
+      const measureCanvas = document.createElement('canvas');
+      const mCtx = measureCanvas.getContext('2d');
+
+      const preparedCards = grammarKeyPoints.map((gp) => {
+        mCtx.font = '700 20px "Plus Jakarta Sans", Inter, sans-serif';
+        const titleLines = wrapCanvasLines(mCtx, gp.title, contentW);
+
+        mCtx.font = '400 16px Inter, sans-serif';
+        const ruleLines = wrapCanvasLines(mCtx, gp.rule, contentW);
+
+        mCtx.font = '600 14px monospace';
+        const formulaLines = wrapCanvasLines(mCtx, gp.formula, contentW - 24);
+
+        mCtx.font = '500 15px Inter, sans-serif';
+        const avoidLines = wrapCanvasLines(mCtx, gp.wrongExample, contentW - 24);
+        const modelLines = wrapCanvasLines(mCtx, gp.rightExample, contentW - 24);
+
+        const formulaBoxH = 28 + formulaLines.length * 20;
+        const avoidBoxH = 34 + avoidLines.length * 21;
+        const modelBoxH = 34 + modelLines.length * 21;
+
+        const cardHeight =
+          22 +
+          28 + // badge
+          14 +
+          titleLines.length * 26 +
+          10 +
+          ruleLines.length * 23 +
+          16 +
+          formulaBoxH +
+          12 +
+          avoidBoxH +
+          10 +
+          modelBoxH +
+          22;
+
+        return {
+          gp,
+          palette: accentPalette[gp.accent] || accentPalette.indigo,
+          titleLines,
+          ruleLines,
+          formulaLines,
+          avoidLines,
+          modelLines,
+          formulaBoxH,
+          avoidBoxH,
+          modelBoxH,
+          cardHeight
+        };
+      });
+
+      // Compute row heights for 3 rows of 2 cards
+      const rowHeights = [];
+      for (let r = 0; r < 3; r++) {
+        const leftH = preparedCards[r * 2].cardHeight;
+        const rightH = preparedCards[r * 2 + 1].cardHeight;
+        rowHeights.push(Math.max(leftH, rightH));
+      }
+
+      const headerHeight = 164;
+      const rowGap = 24;
+      const footerHeight = 64;
+      const totalHeight = headerHeight + 32 + rowHeights.reduce((a, b) => a + b, 0) + rowGap * 2 + footerHeight;
+
+      const dpr = 2;
+      const canvas = document.createElement('canvas');
+      canvas.width = width * dpr;
+      canvas.height = totalHeight * dpr;
+      const ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+
+      // Warm background
+      ctx.fillStyle = '#FAF8F5';
+      ctx.fillRect(0, 0, width, totalHeight);
+
+      // Indigo-to-Teal Header Banner
+      const grad = ctx.createLinearGradient(0, 0, width, headerHeight);
+      grad.addColorStop(0, '#3730A3');
+      grad.addColorStop(1, '#0F766E');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, width, headerHeight);
+
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.beginPath();
+      ctx.arc(width - 80, 45, 115, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Header Pill
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.18)';
+      drawRoundedRectPath(ctx, padX, 30, 340, 30, 8);
+      ctx.fill();
+      ctx.fillStyle = '#E0E7FF';
+      ctx.font = '700 13px "Plus Jakarta Sans", Inter, sans-serif';
+      ctx.fillText('VOCATIONAL ENGLISH · GRAMMAR CLINIC', padX + 14, 50);
+
+      // Header Title
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = '800 33px "Plus Jakarta Sans", Inter, sans-serif';
+      ctx.fillText('6 Essential Grammar Key Points for Workplace Emails', padX, 102);
+
+      ctx.fillStyle = '#CCFBF1';
+      ctx.font = '500 17px Inter, sans-serif';
+      ctx.fillText('Sentence Patterns, Common Mistakes to Avoid & Model Examples', padX, 136);
+
+      // Render 2-column grid of 6 colour-coded rule cards
+      let curY = headerHeight + 32;
+      for (let r = 0; r < 3; r++) {
+        const rowH = rowHeights[r];
+        for (let c = 0; c < 2; c++) {
+          const item = preparedCards[r * 2 + c];
+          const cardX = padX + c * (colWidth + colGap);
+
+          // Card Container
+          ctx.fillStyle = '#FFFFFF';
+          drawRoundedRectPath(ctx, cardX, curY, colWidth, rowH, 18);
+          ctx.fill();
+          ctx.strokeStyle = item.palette.border;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          // Top Accent Bar
+          ctx.fillStyle = item.palette.main;
+          drawRoundedRectPath(ctx, cardX, curY, colWidth, 8, 6);
+          ctx.fill();
+
+          let y = curY + 24;
+          const x = cardX + innerPad;
+
+          // Badge
+          ctx.fillStyle = item.palette.badgeBg;
+          drawRoundedRectPath(ctx, x, y, contentW, 28, 7);
+          ctx.fill();
+          ctx.fillStyle = item.palette.badgeText;
+          ctx.font = '800 12px "Plus Jakarta Sans", Inter, sans-serif';
+          ctx.fillText(item.gp.badge.toUpperCase(), x + 10, y + 18);
+          y += 42;
+
+          // Title
+          ctx.fillStyle = '#0F172A';
+          ctx.font = '800 20px "Plus Jakarta Sans", Inter, sans-serif';
+          item.titleLines.forEach((line) => {
+            ctx.fillText(line, x, y + 18);
+            y += 26;
+          });
+          y += 8;
+
+          // Rule Explanation
+          ctx.fillStyle = '#475569';
+          ctx.font = '400 16px Inter, sans-serif';
+          item.ruleLines.forEach((line) => {
+            ctx.fillText(line, x, y + 16);
+            y += 23;
+          });
+          y += 14;
+
+          // Pattern Box
+          ctx.fillStyle = '#F8FAFC';
+          drawRoundedRectPath(ctx, x, y, contentW, item.formulaBoxH, 10);
+          ctx.fill();
+          ctx.strokeStyle = '#E2E8F0';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          ctx.fillStyle = '#64748B';
+          ctx.font = '700 11px Inter, sans-serif';
+          ctx.fillText('SENTENCE PATTERN', x + 12, y + 16);
+          ctx.fillStyle = '#1E293B';
+          ctx.font = '600 14px monospace';
+          item.formulaLines.forEach((line, lIdx) => {
+            ctx.fillText(line, x + 12, y + 36 + lIdx * 20);
+          });
+          y += item.formulaBoxH + 12;
+
+          // Avoid Box (Rose)
+          ctx.fillStyle = '#FFF1F2';
+          drawRoundedRectPath(ctx, x, y, contentW, item.avoidBoxH, 10);
+          ctx.fill();
+          ctx.fillStyle = '#BE123C';
+          ctx.font = '800 12px Inter, sans-serif';
+          ctx.fillText('✕ AVOID', x + 12, y + 18);
+          ctx.fillStyle = '#881337';
+          ctx.font = '500 15px Inter, sans-serif';
+          item.avoidLines.forEach((line, lIdx) => {
+            ctx.fillText(line, x + 12, y + 38 + lIdx * 21);
+          });
+          y += item.avoidBoxH + 10;
+
+          // Model Box (Emerald)
+          ctx.fillStyle = '#ECFDF5';
+          drawRoundedRectPath(ctx, x, y, contentW, item.modelBoxH, 10);
+          ctx.fill();
+          ctx.fillStyle = '#047857';
+          ctx.font = '800 12px Inter, sans-serif';
+          ctx.fillText('✓ MODEL', x + 12, y + 18);
+          ctx.fillStyle = '#064E3B';
+          ctx.font = '600 15px Inter, sans-serif';
+          item.modelLines.forEach((line, lIdx) => {
+            ctx.fillText(line, x + 12, y + 38 + lIdx * 21);
+          });
+        }
+        curY += rowH + rowGap;
+      }
+
+      // Footer
+      ctx.fillStyle = '#64748B';
+      ctx.font = '600 15px Inter, sans-serif';
+      ctx.fillText('Guided Email Writing Studio · Grammar Key Points Reference Sheet', padX, totalHeight - 26);
+
+      downloadCanvasAsPng(canvas, 'Grammar_Key_Points_Sheet.png');
+      showToast('Coloured Grammar Key Points Sheet downloaded!');
+    }
+
+    // =========================================================================
+    // NAVIGATION & DRAWER CONTROLS
+    // =========================================================================
+    function switchStep(stepNum) {
+      for (let i = 1; i <= 3; i++) {
+        const panel = document.getElementById(`step-panel-${i}`);
+        const btn = document.getElementById(`stepper-btn-${i}`);
+        const badge = document.getElementById(`stepper-badge-${i}`);
+
+        if (i === stepNum) {
+          panel.classList.remove('hidden');
+          btn.className = 'w-full flex items-center gap-2.5 p-2 sm:px-3.5 sm:py-2.5 rounded-xl border-2 border-teal-600 bg-teal-50 text-teal-950 font-display transition shadow-2xs';
+          badge.className = 'w-7 h-7 rounded-full bg-teal-600 text-white flex items-center justify-center font-display font-bold text-xs shrink-0';
+        } else {
+          panel.classList.add('hidden');
+          btn.className = 'w-full flex items-center gap-2.5 p-2 sm:px-3.5 sm:py-2.5 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-300 text-slate-600 font-display transition';
+          badge.className = 'w-7 h-7 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-display font-bold text-xs shrink-0';
+        }
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleBlueprintModal(show) {
+      const modal = document.getElementById('blueprint-modal');
+      if (show) {
+        modal.classList.remove('hidden');
+      } else {
+        modal.classList.add('hidden');
+      }
+    }
+
+    function toggleNextStepsModal(show) {
+      const modal = document.getElementById('next-steps-modal');
+      if (show) {
+        modal.classList.remove('hidden');
+      } else {
+        modal.classList.add('hidden');
+      }
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // =========================================================================
+    // TOAST & INITIALISATION
+    // =========================================================================
+    let toastTimer = null;
+    function showToast(msg) {
+      const toast = document.getElementById('toast-banner');
+      document.getElementById('toast-message').textContent = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 2600);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      shuffleRepairOptions();
+      renderQuiz();
+      switchClozePart('A');
+      renderGrammarClinic();
+      switchStep(1);
+    });
+  </script>
+</body>
+</html>
